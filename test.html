@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+        function test() {
+            var x = 0;
+
+            var Time1 = new Date();
+
+            for (var i = 1; i < 1000000000; i++) { x += i; }
+            var Time2 = new Date();
+            var diff = Time2.getTime() - Time1.getTime();
+            window.alert("结果为:" + x + "\n用时:" + diff);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="test()">1000000000轮循环</button>
+</body>
+</html>
