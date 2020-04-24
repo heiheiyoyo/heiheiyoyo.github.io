@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Focus To-Do</title>
+    <link href="main.css" rel="stylesheet">
+    <link rel="icon" href="logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="logo.ico" type="image/x-icon" />
+    <script src="js/jquery-3.5.0.js"></script>
+    
+</head>
+
+<body>
+    <div id="root" style="height: 100%; width: 100%;"></div>
+    <div id="modal-root"></div>
+    <div>
+        <div id="task-deadline-width" class="small-font"
+            style="display: inline-block; position: absolute; top: -10000px"></div>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+
+        function crack() {
+            localStorage["ExpiredDate"] = "4102415999000";
+            window.alert("破解完成！");
+            if (window.confirm("是否进行相应设置？\n自动切换番茄钟\n修改铃声")) {
+                localStorage['AutoWork'] = 'true';
+                localStorage['AutoBreak'] = 'true';
+                localStorage['WorkAlarm'] = 'alm_WindChimes';
+                localStorage['BreakAlarm'] = 'alm_SchoolBell';
+
+            }
+            $("#cracklink").remove();
+        }
+        (function () {
+            var ExpiredDate = parseInt(localStorage["ExpiredDate"] || '0');
+            if (ExpiredDate < 4102415999000) {
+                $("body").append("<a id='cracklink' href='javascript:void(0);' onclick='crack()' style='cursor:pointer;z-index:98;display:block;width:30px;height:30px;line-height:30px;position:fixed;left:0;top:300px;text-align:center;'><img src='https://www.zuihuimai.net/images/vip.gif' height='55' ></a>");
+            }
+            $(window).bind('beforeunload', function () {
+                return '是否要退出？';
+            });
+        }())
+
+    </script>
+</body>
+
+</html>
